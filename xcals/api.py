@@ -18,7 +18,15 @@ TIME_FORMAT = "%H:%M:%S"
 USERHOME = os.path.expanduser('~')  # 用户家目录
 
 FILE = os.path.join(USERHOME, ".xcals")
+FILE_URL = "https://raw.githubusercontent.com/link-yundi/xcals/refs/heads/main/.xcals"
 
+def update():
+    try:
+        print(f"reading data from {FILE_URL}")
+        pd.read_csv(FILE_URL, header=None, dtype=str).to_csv(FILE, index=False, header=False)
+        print(f"save {FILE} done.")
+    except Exception as e:
+        print(f"更新交易日数据失败: {e}")
 
 def get_tradingdays(beg_date: Optional[str] = None, end_date: Optional[str] = None) -> list:
     """

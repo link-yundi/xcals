@@ -6,10 +6,11 @@ Created on 2025/5/25 20:54
 @email: yundi.xxii@outlook.com
 ---------------------------------------------
 """
+import os.path
 
-import os
 from .api import (
     FILE,
+    update,
     get_tradingdays,
     get_tradingtime,
     get_recent_reportdate,
@@ -22,15 +23,16 @@ from .api import (
     shift_reportdate,
 )
 
-def update():
-    """更新交易日数据"""
-    if not os.path.exists(FILE):
-        ...
-    ...
+__version__ = "v0.0.1"
+
+if not os.path.exists(FILE):
+    print(f"{FILE} missing")
+    update()
 
 
 __all__ = [
     "FILE",
+    "update",
     "get_tradingdays",
     "get_tradingtime",
     "get_recent_reportdate",
