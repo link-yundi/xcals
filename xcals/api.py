@@ -35,13 +35,6 @@ def get_tradingdays(beg_date: Optional[str] = None, end_date: Optional[str] = No
     :param end_date: 结束日期
     :return: 交易日历
     """
-    # trading_df = ycat.sql(f"select * from {TB_CALENDAR};")
-    # conds = [pl.col("IfTradingDay") == 1, ]
-    # if beg_date is not None:
-    #     conds.append(pl.col("date") >= beg_date)
-    # if end_date is not None:
-    #     conds.append(pl.col("date") <= end_date)
-    # trading_days = trading_df.filter(*conds).collect()
     s = pd.read_csv(FILE, header=None, dtype=str)[0]
     if beg_date is not None:
         s = s[s >= beg_date]
@@ -192,7 +185,8 @@ def get_tradingtime(freq: str = "1s") -> list:
     end_time_pm = "15:00:00"
     time_am = pd.date_range(beg_time_am, end_time_am, freq=freq).strftime(TIME_FORMAT).tolist()
     time_pm = pd.date_range(beg_time_pm, end_time_pm, freq=freq).strftime(TIME_FORMAT).tolist()
-    return time_am.extend(time_pm)
+    time_am.extend(time_pm)
+    return time_am
 
 
 _tradingtime_index = pd.date_range(start="09:30:00", end="11:30:00", freq="1s").strftime("%H:%M:%S").append(

@@ -23,7 +23,7 @@ from .api import (
     shift_reportdate,
 )
 
-__version__ = "v0.0.1"
+__version__ = "v0.0.2"
 
 if not os.path.exists(FILE):
     print(f"{FILE} missing")
