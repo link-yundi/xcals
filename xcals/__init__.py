@@ -9,6 +9,8 @@ Created on 2025/5/25 20:54
 import os.path
 
 from .api import (
+    DATE_FORMAT,
+    TIME_FORMAT,
     FILE,
     update,
     get_tradingdays,
@@ -21,9 +23,11 @@ from .api import (
     shift_tradedt,
     shift_tradetime,
     shift_reportdate,
+    today,
+    now,
 )
 
-__version__ = "v0.0.2"
+__version__ = "v0.0.3"
 
 if not os.path.exists(FILE):
     print(f"{FILE} missing")
@@ -31,6 +35,8 @@ if not os.path.exists(FILE):
 
 
 __all__ = [
+    "DATE_FORMAT",
+    "TIME_FORMAT",
     "FILE",
     "update",
     "get_tradingdays",
@@ -42,5 +48,7 @@ __all__ = [
     "shift_tradeday",
     "shift_tradetime",
     "shift_tradedt",
-    "shift_reportdate"
+    "shift_reportdate",
+    "today",
+    "now",
 ]

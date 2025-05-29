@@ -20,6 +20,12 @@ USERHOME = os.path.expanduser('~')  # 用户家目录
 FILE = os.path.join(USERHOME, ".xcals")
 FILE_URL = "https://raw.githubusercontent.com/link-yundi/xcals/refs/heads/main/.xcals"
 
+def today():
+    return datetime.today().strftime(DATE_FORMAT)
+
+def now():
+    return datetime.now().strftime(TIME_FORMAT)
+
 def update():
     try:
         print(f"reading data from {FILE_URL}")
